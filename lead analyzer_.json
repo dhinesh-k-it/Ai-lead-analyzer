@@ -1,1 +1,852 @@
-
+{
+  "name": "lead analyzer*",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "r1",
+                    "leftValue": "={{$json.lead_score}}",
+                    "rightValue": 80,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Hot"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "r2",
+                    "leftValue": "={{$json.lead_score}}",
+                    "rightValue": 50,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Warm"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "r3",
+                    "leftValue": "={{$json.lead_score}}",
+                    "rightValue": 49,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cold"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "id": "bffdba63-d924-4e07-b098-0662cd1ee61f",
+      "name": "Hot / Warm / Cold Routing",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        128,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1SKnFXN4DTWYJthb_myZ3i3v7ygLee3zSXvfckvIMzLs",
+          "mode": "list",
+          "cachedResultName": "lead analyzer v3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1SKnFXN4DTWYJthb_myZ3i3v7ygLee3zSXvfckvIMzLs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 135976921,
+          "mode": "list",
+          "cachedResultName": "hot",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1SKnFXN4DTWYJthb_myZ3i3v7ygLee3zSXvfckvIMzLs/edit#gid=135976921"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "47acfd0a-4066-4ec8-a71f-4541e6cd564e",
+      "name": "Google Sheets - Hot Leads",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        480,
+        16
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2sJ0IxY31gJz45Lm",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1SKnFXN4DTWYJthb_myZ3i3v7ygLee3zSXvfckvIMzLs",
+          "mode": "list",
+          "cachedResultName": "lead analyzer v3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1SKnFXN4DTWYJthb_myZ3i3v7ygLee3zSXvfckvIMzLs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1SKnFXN4DTWYJthb_myZ3i3v7ygLee3zSXvfckvIMzLs/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "budget",
+              "displayName": "budget",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lead_category",
+              "displayName": "lead_category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lead_score",
+              "displayName": "lead_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "reasoning",
+              "displayName": "reasoning",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "f19c250a-eca7-44ec-a55b-904f137e2374",
+      "name": "Google Sheets - Warm Leads",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        416,
+        192
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2sJ0IxY31gJz45Lm",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1SKnFXN4DTWYJthb_myZ3i3v7ygLee3zSXvfckvIMzLs",
+          "mode": "list",
+          "cachedResultName": "lead analyzer v3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1SKnFXN4DTWYJthb_myZ3i3v7ygLee3zSXvfckvIMzLs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1758813324,
+          "mode": "list",
+          "cachedResultName": "Sheet2",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1SKnFXN4DTWYJthb_myZ3i3v7ygLee3zSXvfckvIMzLs/edit#gid=1758813324"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "b5eb1d59-31fc-468d-9aa8-6a3dcd04f547",
+      "name": "Google Sheets - Cold Leads",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        528,
+        416
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2sJ0IxY31gJz45Lm",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "id": "1797424a-03d6-43b4-b270-7f188d09fa4d",
+      "name": "Merge - All Branches",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        1024,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "leads_analytics",
+          "mode": "list"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "lead_score": "={{ $('Edit Fields').item.json.lead_score }}",
+            "name": "={{ $('Edit Fields').item.json.name }}",
+            "email": "={{ $('Edit Fields').item.json.email }}",
+            "phone": "={{ $('Edit Fields').item.json.phone }}",
+            "message": "={{ $('Edit Fields').item.json.message }}",
+            "lead_category": "={{ $('Edit Fields').item.json.lead_category }}",
+            "reasoning": "={{ $('Edit Fields').item.json.reasoning }}",
+            "created_at": "={{ $now.toISO()}}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lead_category",
+              "displayName": "lead_category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lead_score",
+              "displayName": "lead_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "reasoning",
+              "displayName": "reasoning",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "b219c762-b0e3-4f0b-8511-f4c3c32c0b6c",
+      "name": "PostgreSQL - Insert Lead Record",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1248,
+        224
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "BTQ1kTqbT1qvyPO7",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO analytics_daily_summary (report_date, total_leads, hot_count, warm_count, cold_count, avg_score)\nSELECT\n  CURRENT_DATE,\n  COUNT(*),\n  COUNT(*) FILTER (WHERE lead_category = 'hot'),\n  COUNT(*) FILTER (WHERE lead_category = 'warm'),\n  COUNT(*) FILTER (WHERE lead_category = 'cold'),\n  AVG(lead_score)\nFROM leads_analytics\nWHERE received_at::date = CURRENT_DATE\nON CONFLICT (report_date) DO UPDATE SET\n  total_leads = EXCLUDED.total_leads,\n  hot_count = EXCLUDED.hot_count,\n  warm_count = EXCLUDED.warm_count,\n  cold_count = EXCLUDED.cold_count,\n  avg_score = EXCLUDED.avg_score;",
+        "options": {}
+      },
+      "id": "6b781661-f4bc-432d-9b52-07825793aa70",
+      "name": "Analytics - Update Daily Summary",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1456,
+        224
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "BTQ1kTqbT1qvyPO7",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-intake-webhook",
+        "options": {}
+      },
+      "id": "978a22c6-2601-4401-be3c-7e4aeb814d61",
+      "name": "lead",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -752,
+        224
+      ],
+      "webhookId": "lead-intake-webhook"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "models/gemini-3-flash-preview"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Analyze the following lead based on their message and provide a lead\nscore with reasoning.\n\nLead Information:\nName: {{ $json.body.name }}\ncompany: {{ $json.body.company }}\nEmail:{{ $json.body.email }}\nMessage: {{ $json.body.message }}\n\nEvaluate the lead using these signals:\n- Buying intent (are they asking to buy/demo/discuss pricing, or just browsing?)\n- Urgency (do they mention a timeline or deadline?)\n- Authority (do they sound like a decision-maker — founder, VP, manager — or\n  an individual just researching?)\n- Budget clarity (is a budget mentioned or implied?)\n- Specificity (vague general interest vs. a clear, specific need)\n\nClassify the lead as exactly one of: \"hot\", \"warm\", or \"cold\".\n- hot: strong intent + urgency + authority/budget signals present\n- warm: genuine interest but missing intent, urgency, or authority signals\n- cold: no real intent, vague inquiry, or clearly not a sales-ready lead\n\nRespond with ONLY a valid JSON object, no markdown, no extra text, in\nexactly this format:\n\n{\n  \"reasoning\": \"<1-2 sentence explanation citing specific signals from the message>\",\n  \"lead_category\": \"hot\" | \"warm\" | \"cold\",\n  \"lead_score\": \"hot=80 to 100\"|\"warm=50 to 80\"|\"cold=20to50\"\n}"
+            },
+            {
+              "content": "={{ $json.body.name }}{{ $json.body.company }}{{ $json.body.email }}{{ $json.body.phone }}{{ $json.body.message }}{{ $json.body.budget }}{{ $json.body.source }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        -624,
+        224
+      ],
+      "id": "690e75c0-83be-4564-972c-e8dfc0200800",
+      "name": "gemi",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "hq4xocHcg17JIdBT",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Lead data from Webhook\nconst lead = $('lead').first().json.body;\n\n// Gemini output\nconst aiJson = $input.first().json;\n\n// Try multiple possible Gemini response formats\nconst aiRaw =\n    aiJson.content?.parts?.[0]?.text ||\n    aiJson.message?.content ||\n    aiJson.message?.text ||\n    aiJson.text ||\n    aiJson.candidates?.[0]?.content?.parts?.[0]?.text ||\n    aiJson.choices?.[0]?.message?.content ||\n    '';\n\n// Convert JSON string into object\nconst ai = JSON.parse(aiRaw);\n\nreturn [{\n  json: {\n    name: lead.name,\n    email: lead.email,\n    company: lead.company,\n    budget: lead.budget,\n    message: lead.message,\n    phone: lead.phone,\n\n    lead_category: ai.lead_category,\n    lead_score: Number(ai.lead_score),\n    reasoning: ai.reasoning\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        256
+      ],
+      "id": "715d890c-842f-4a54-91e8-fd8c75372985",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9fceb5fe-593e-4769-9a4a-fa62b94d4a95",
+              "name": "name",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "4ced0bf4-e34a-41ce-b9be-0254cb7a36d6",
+              "name": "email",
+              "value": "={{ $json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "760c5d21-65e0-4825-a60a-fee4268ccf71",
+              "name": "company",
+              "value": "={{ $json.company }}",
+              "type": "string"
+            },
+            {
+              "id": "a3c193af-8d5e-41be-9c89-ac41b41f7de2",
+              "name": "phone",
+              "value": "={{ $json.phone }}",
+              "type": "string"
+            },
+            {
+              "id": "dea9e7b7-bfa3-49f1-bf4c-2accf976405b",
+              "name": "budget",
+              "value": "={{ $json.budget }}",
+              "type": "number"
+            },
+            {
+              "id": "815699a7-7acd-4273-88de-854578625097",
+              "name": "message",
+              "value": "={{ $json.message }}",
+              "type": "string"
+            },
+            {
+              "id": "51219848-95a9-4cf9-94df-277b1e0406eb",
+              "name": "lead_category",
+              "value": "={{ $json.lead_category }}",
+              "type": "string"
+            },
+            {
+              "id": "13e24e9b-1c9f-405e-a05e-927abe693684",
+              "name": "lead_score",
+              "value": "={{ $json.lead_score }}",
+              "type": "number"
+            },
+            {
+              "id": "de73ca9f-d6c6-48d8-bbf1-5099f2a67901",
+              "name": "reasoning",
+              "value": "={{ $json.reasoning }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -144,
+        272
+      ],
+      "id": "03e55f6c-cc2d-45fd-8784-e616cf7707a9",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Edit Fields').item.json.email }}",
+        "subject": "=Thanks for reaching out,  {{ $json.name }}!",
+        "message": "=<p>Hi {{ $json.name }},</p><p>Thanks for getting in touch. A member of our team will follow up with you shortly to discuss your needs.</p> ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        624,
+        192
+      ],
+      "id": "2f3f67fc-88ec-4e89-b5d6-6df3287a90d9",
+      "name": "Send a message",
+      "webhookId": "4f439561-2214-4520-9eb3-23e2399f4e19",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "I1dUCs2rjSTAp61A",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "=dhinesh6250@gmail.com",
+        "subject": "=Resources you might find useful,{{ $('Edit Fields').item.json.name }}",
+        "message": "=<p>Hi {{ $('Edit Fields').item.json.name }},</p><p>Thanks for your interest! Here are a few resources to help you learn more about us in the meantime. We'll keep in touch.</p>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        752,
+        368
+      ],
+      "id": "ad7b65eb-4d67-4d0a-95ae-261d68c5a0f9",
+      "name": "Send a message1",
+      "webhookId": "eb0b2d16-77e8-4573-9e44-d7c5697704fb",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "I1dUCs2rjSTAp61A",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{'dhinesh6250@gmail.com'}}",
+        "subject": "=🔥 HOT Lead: {{$json.name}} ({{ $('Edit Fields').item.json.lead_score }}/100)",
+        "message": "=<p><b>Immediate attention required.</b></p><p>Name:{{ $('Edit Fields').item.json.name }}br>Company:{{ $('Edit Fields').item.json.company }} <br>Email: {{ $('Edit Fields').item.json.email }}<br>Score:{{ $('Edit Fields').item.json.lead_score }}/100</p><p>AI Reasoning: {{ $('Edit Fields').item.json.reasoning }}</p><p>Message: {{ $('Edit Fields').item.json.message }}</p>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        752,
+        48
+      ],
+      "id": "5ec5fb84-20ea-4ffd-9c7d-cb2e9e2fa37c",
+      "name": "Send a message2",
+      "webhookId": "0eee4c11-27a2-497c-891d-236e48296201",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "I1dUCs2rjSTAp61A",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Hot / Warm / Cold Routing": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets - Hot Leads",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Google Sheets - Warm Leads",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Google Sheets - Cold Leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets - Hot Leads": {
+      "main": [
+        [
+          {
+            "node": "Send a message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets - Warm Leads": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets - Cold Leads": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge - All Branches": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL - Insert Lead Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Insert Lead Record": {
+      "main": [
+        [
+          {
+            "node": "Analytics - Update Daily Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "lead": {
+      "main": [
+        [
+          {
+            "node": "gemi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gemi": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Hot / Warm / Cold Routing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Merge - All Branches",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Analytics - Update Daily Summary": {
+      "main": [
+        []
+      ]
+    },
+    "Send a message1": {
+      "main": [
+        [
+          {
+            "node": "Merge - All Branches",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Send a message2": {
+      "main": [
+        [
+          {
+            "node": "Merge - All Branches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "1a3e067a-afe1-4774-a358-a80cb6f69830",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "61b902dd7bc0437ff850dc774b308b19a1c64d4656575fd97a6add1ae079d86c"
+  },
+  "nodeGroups": [],
+  "id": "ITa8uCUAcQGROwX0",
+  "tags": []
+}
