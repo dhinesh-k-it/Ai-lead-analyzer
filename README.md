@@ -102,7 +102,7 @@ Example Output:
 
 ## Workflow
 
-![Workflow](screenshots/workflow.png)
+![Workflow](workflow.png)
 
 ---
 
