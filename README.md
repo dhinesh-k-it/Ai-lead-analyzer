@@ -108,25 +108,25 @@ Example Output:
 
 ## Lead Analysis Output
 
-![Lead Analysis](screenshots/lead-analysis.png)
+![Lead Analysis](lead-analysis.png)
 
 ---
 
 ## Google Sheets Storage
 
-![Google Sheets](screenshots/google-sheets.png)
+![Google Sheets](google-sheets.png)
 
 ---
 
 ## PostgreSQL Database
 
-![Database](screenshots/postgresql-table.png)
+![Database](postgresql-table.png)
 
 ---
 
 ## Daily Analytics Dashboard
 
-![Analytics](screenshots/analytics-summary.png)
+![Analytics](analytics-summary.png)
 
 ---
 
