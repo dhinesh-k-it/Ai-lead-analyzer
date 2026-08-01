@@ -52,7 +52,9 @@ Generate:
 ```json
 {
   "name": "John Smith",
+  "company" : "dsa comapny",
   "email": "john@abccompany.com",
+  "phone" : "09879876",
   "budget": "50000",
   "message": "We need 500 custom t-shirts for our company event next month."
 }
