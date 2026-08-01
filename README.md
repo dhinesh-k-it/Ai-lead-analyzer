@@ -38,12 +38,6 @@ This system automates the entire lead qualification process using AI.
 
 ---
 
-# 🏗 Architecture
-
-![Workflow](screenshots/workflow.png)
-
----
-
 # ⚙ Workflow
 
 ```text
