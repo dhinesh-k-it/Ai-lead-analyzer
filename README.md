@@ -114,7 +114,7 @@ Example Output:
 
 ## Google Sheets Storage
 
-![Google Sheets](google_sheets.png)
+![Google Sheets](google_sheet.png)
 
 ---
 
