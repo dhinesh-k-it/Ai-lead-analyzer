@@ -1,4 +1,8 @@
 # 🚀 AI Lead Analyzer
+<p align="center">
+  <img src="lead banner.png" alt="E-Commerce AI Support Chatbot" width="900">
+</p>
+# 🚀 AI Lead Analyzer
 
 ![n8n](https://img.shields.io/badge/n8n-Workflow_Automation-orange)
 ![Google Gemini](https://img.shields.io/badge/Google-Gemini_AI-blue)
